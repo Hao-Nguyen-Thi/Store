@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -126,13 +134,88 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\categoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\commentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\discountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\imageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\orderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\order_detailController.cs" />
+    <Compile Include="Areas\Admin\Controllers\postsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\productController.cs" />
+    <Compile Include="Areas\Admin\Controllers\reviewController.cs" />
+    <Compile Include="Areas\Admin\Controllers\usersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\admin.cs" />
+    <Compile Include="Models\Entity\category.cs" />
+    <Compile Include="Models\Entity\comment.cs" />
+    <Compile Include="Models\Entity\discount.cs" />
+    <Compile Include="Models\Entity\image.cs" />
+    <Compile Include="Models\Entity\MyDBContext.cs" />
+    <Compile Include="Models\Entity\order.cs" />
+    <Compile Include="Models\Entity\order_detail.cs" />
+    <Compile Include="Models\Entity\post.cs" />
+    <Compile Include="Models\Entity\product.cs" />
+    <Compile Include="Models\Entity\review.cs" />
+    <Compile Include="Models\Entity\user.cs" />
+    <Compile Include="Models\Function\Hash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Admin\css\bootstrap.min.css" />
+    <Content Include="Assets\Admin\css\demo.css" />
+    <Content Include="Assets\Admin\css\material-dashboard.css" />
+    <Content Include="Assets\Admin\img\card-1.jpeg" />
+    <Content Include="Assets\Admin\img\card-2.jpeg" />
+    <Content Include="Assets\Admin\img\card-3.jpeg" />
+    <Content Include="Assets\Admin\img\default-avatar.png" />
+    <Content Include="Assets\Admin\img\faces\avatar.jpg" />
+    <Content Include="Assets\Admin\img\faces\card-profile1-square.jpg" />
+    <Content Include="Assets\Admin\img\faces\marc.jpg" />
+    <Content Include="Assets\Admin\img\flags\AU.png" />
+    <Content Include="Assets\Admin\img\flags\BR.png" />
+    <Content Include="Assets\Admin\img\flags\DE.png" />
+    <Content Include="Assets\Admin\img\flags\GB.png" />
+    <Content Include="Assets\Admin\img\flags\RO.png" />
+    <Content Include="Assets\Admin\img\flags\US.png" />
+    <Content Include="Assets\Admin\img\image_placeholder.jpg" />
+    <Content Include="Assets\Admin\img\placeholder.jpg" />
+    <Content Include="Assets\Admin\img\product1.jpg" />
+    <Content Include="Assets\Admin\img\product2.jpg" />
+    <Content Include="Assets\Admin\img\product3.jpg" />
+    <Content Include="Assets\Admin\img\sidebar-1.jpg" />
+    <Content Include="Assets\Admin\img\sidebar-2.jpg" />
+    <Content Include="Assets\Admin\img\sidebar-3.jpg" />
+    <Content Include="Assets\Admin\img\sidebar-4.jpg" />
+    <Content Include="Assets\Admin\js\Ajax.js" />
+    <Content Include="Assets\Admin\js\bootstrap-datetimepicker.js" />
+    <Content Include="Assets\Admin\js\bootstrap-notify.js" />
+    <Content Include="Assets\Admin\js\bootstrap.min.js" />
+    <Content Include="Assets\Admin\js\chartist.min.js" />
+    <Content Include="Assets\Admin\js\demo.js" />
+    <Content Include="Assets\Admin\js\fullcalendar.min.js" />
+    <Content Include="Assets\Admin\js\jasny-bootstrap.min.js" />
+    <Content Include="Assets\Admin\js\jquery-3.1.1.min.js" />
+    <Content Include="Assets\Admin\js\jquery-jvectormap.js" />
+    <Content Include="Assets\Admin\js\jquery-ui.min.js" />
+    <Content Include="Assets\Admin\js\jquery.bootstrap-wizard.js" />
+    <Content Include="Assets\Admin\js\jquery.datatables.js" />
+    <Content Include="Assets\Admin\js\jquery.fileupload.js" />
+    <Content Include="Assets\Admin\js\jquery.select-bootstrap.js" />
+    <Content Include="Assets\Admin\js\jquery.sharrre.js" />
+    <Content Include="Assets\Admin\js\jquery.tagsinput.js" />
+    <Content Include="Assets\Admin\js\jquery.validate.min.js" />
+    <Content Include="Assets\Admin\js\main.js" />
+    <Content Include="Assets\Admin\js\material-dashboard.js" />
+    <Content Include="Assets\Admin\js\material.min.js" />
+    <Content Include="Assets\Admin\js\moment.min.js" />
+    <Content Include="Assets\Admin\js\nouislider.min.js" />
+    <Content Include="Assets\Admin\js\perfect-scrollbar.jquery.min.js" />
+    <Content Include="Assets\Admin\js\sweetalert2.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -143,6 +226,30 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_Login.cshtml" />
+    <Content Include="Assets\Admin\img\Thumbs.db" />
+    <Content Include="Areas\Admin\Views\Shared\Layout\_Dashboard.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\profile.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\addNew.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\listCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\listComments.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\addNew.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\listDiscount.cshtml" />
+    <Content Include="Areas\Admin\Views\Image\addNew.cshtml" />
+    <Content Include="Areas\Admin\Views\Image\listImage.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\listOrder.cshtml" />
+    <Content Include="Areas\Admin\Views\Order_detail\detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\addNew.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\listPosts.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\addNew.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\listProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Review\listReviews.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\addNew.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\listUsers.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -154,6 +261,14 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Upload\Admin\avt.jpg" />
+    <Content Include="Upload\Admin\Picture1.png" />
+    <Content Include="Upload\Products\4ec3fc04c73b84b61ab9e4341a364975.jpg" />
+    <Content Include="Upload\Products\8bdd29b6ef9cfe5d4639c09717d2cc5d.jpg" />
+    <Content Include="Upload\Products\8c581916dfa8923d22ce24b316413a8d.jpg" />
+    <Content Include="Upload\Products\a473fce4ea0fdccd9db68da03f3ab69b.jpg" />
+    <Content Include="Upload\Products\bdc148320885648dd91b0d510a787c7b.jpg" />
+    <Content Include="Upload\Users\1b360dc6d1e366c0d79c8f6525ec0317.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -168,10 +283,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Upload\.DS_Store" />
+    <Content Include="Upload\Admin\Thumbs.db" />
+    <Content Include="Upload\Admin\YXZ0LmpwZw==" />
+    <Content Include="Upload\Products\.DS_Store" />
+    <Content Include="Upload\Users\.DS_Store" />
+    <Content Include="Upload\Users\1b360dc6d1e366c0d79c8f6525ec0317" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

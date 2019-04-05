@@ -1,0 +1,85 @@
+﻿@using Mobie_store.Models.Entity
+@{admin obj = (admin)Session["admin"]; }
+@{
+    ViewBag.Title = "profile";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dashboard.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">perm_identity</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">
+                    Edit Profile -
+                    <small class="category">Complete your profile</small>
+                </h4>
+                <form>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label">Company (disabled)</label>
+                                <input type="text" class="form-control" disabled="">
+                                <span class="material-input"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Username</label>
+                                <input type="text" class="form-control" value="@obj.username">
+                                <span class="material-input"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Email address</label>
+                                <input type="email" class="form-control" value="@obj.email">
+                                <span class="material-input"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group label-floating ">
+                                <label class="control-label">Full Name</label>
+                                <input type="text" class="form-control" value="@obj.fullname">
+                                <span class="material-input"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group label-floating ">
+                                <label class="control-label">Adress</label>
+                                <input type="text" class="form-control" value="@obj.address">
+                                <span class="material-input"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-rose pull-right">Update Profile</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-profile">
+            <div class="card-avatar">
+                <a href="user.html#pablo">
+                    <img class="img" src="@obj.image">
+                </a>
+            </div>
+            <div class="card-content">
+                <h6 class="category text-gray">CEO / Co-Founder</h6>
+                <h4 class="card-title">@obj.fullname</h4>
+                <p class="description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                </p>
+                <a href="user.html#pablo" class="btn btn-rose btn-round">Follow</a>
+            </div>
+        </div>
+    </div>
+</div>
+

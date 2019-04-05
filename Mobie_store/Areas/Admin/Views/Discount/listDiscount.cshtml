@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Mobie_store.Models.Entity.discount>
+@{
+    ViewBag.Title = "listDiscount";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dashboard.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="purple">
+                <i class="material-icons">assignment</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">Discount DataTables</h4>
+                <div class="toolbar">
+                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+                </div>
+                <div class="material-datatables">
+                    <table id="discountTable" class="table table-striped table-no-bordered table-hover datatables" cellspacing="0" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Stt</th>
+                                <th>Name</th>
+                                <th>Value</th>
+                                <th class="disabled-sorting text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Value</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @{var count = 0;};
+                            @foreach (var ds in Model)
+                            {
+                                <tr class="row_@ds.id">
+                                    <td>@(++count)</td>
+                                    <td>@ds.name</td>
+                                    <td>@ds.value</td>
+                                    <td class="text-right">
+                                        <a href="" class="btn btn-simple btn-info btn-icon delete_image_product" data-id="@ds.id"><i class="material-icons">clear</i></a>
+                                    </td>
+                                </tr>
+                             }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end content-->
+        </div>
+        <!--  end card  -->
+    </div>
+    <!-- end col-md-12 -->
+</div>
+
