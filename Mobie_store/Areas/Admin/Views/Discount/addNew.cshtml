@@ -1,0 +1,48 @@
+﻿@using Mobie_store.Models.Entity
+@{
+    ViewBag.Title = "addNew";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dashboard.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <form method="post" action="@Url.Action("addNew","discount")" class="form-horizontal">
+            <div class="card-header card-header-text" data-background-color="rose">
+                <h4 class="card-title">Form Add New Discount</h4>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    @Html.Raw(ViewBag.HtmlStr)
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Discount Name</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="name" class="form-control" value="">
+                            <span class="help-block">Input Your Discount name.</span>
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Discount Value</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="value" class="form-control" value="">
+                            <span class="help-block">Input Your Discount value.</span>
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-fill btn-rose">Add New</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

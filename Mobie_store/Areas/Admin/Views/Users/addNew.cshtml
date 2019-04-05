@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "addNew";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dashboard.cshtml";
+}
+<div class="col-md-12">
+    <div class="card">
+        <form method="post" action="@Url.Action("addNew","users")" class="form-horizontal" enctype="multipart/form-data">
+            <div class="card-header card-header-text" data-background-color="rose">
+                <h4 class="card-title">Form Add New Users</h4>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    @Html.Raw(ViewBag.HtmlStr)
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">UserName</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="username" class="form-control" value="">
+                            <span class="help-block">Input Your Username.</span>
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">FullName</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="fullname" class="form-control" value="">
+                            <span class="help-block">Input Your Fullname.</span>
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Password</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="password" name="pwd" class="form-control" value="">
+                            <span class="help-block">Input Your Password.</span>
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">RePassword</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="password" name="re_pwd" class="form-control" value="">
+                            <span class="help-block">Input RePassword.</span>
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Email</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="email" name="email" class="form-control" value="">
+                            <span class="help-block">Input Your Email.</span>
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Address</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="address" class="form-control" value="">
+                            <span class="help-block">Input Your Address.</span>
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Phone</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="phone" class="form-control" value="">
+                            <span class="help-block">Input Your Phone Number.</span>
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="col-sm-2 label-on-left">
+                        Image
+                    </label>
+                    <div class="col-sm-6">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail img-circle">
+                                    <img src="~/Assets/Admin/img/placeholder.jpg" alt="">
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail img-circle"></div>
+                                <div>
+                                    <span class="btn btn-round btn-rose btn-file">
+                                        <span class="fileinput-new">Add Photo</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="file" name="file">
+                                    </span>
+                                    <br>
+                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-fill btn-rose">Add New</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

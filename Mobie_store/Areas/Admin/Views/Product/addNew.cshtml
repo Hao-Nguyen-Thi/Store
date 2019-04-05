@@ -1,0 +1,193 @@
+﻿@using Mobie_store.Models.Entity
+@{
+    ViewBag.Title = "addNew";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dashboard.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <form method="post" action="@Url.Action("addNew","product")" class="form-horizontal">
+            <div class="card-header card-header-text" data-background-color="rose">
+                <h4 class="card-title">Form Add New Product</h4>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    @Html.Raw(ViewBag.HtmlStr)
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Mã Sản Phẩm</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="sku" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Tên sản phẩm</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="name" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Giá Tiền</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="price" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Băng tần</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="Ghz" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Mầu Sắc</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="color" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Cảm Biến</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="sensor" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">CPU</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="cpu" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Ram</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="ram" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Bộ Nhớ</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="storage" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Camera trước</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="camera_front" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Camera sau</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="camera_rear" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Dung lượng pin</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="battery" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Màn hình</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="display" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Sim</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="sim" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Trạng thái</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="status" class="form-control" value="">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Phân loại</label>
+                    <div class="col-sm-4 col-sm-offset-1 checkbox-radios">
+                        @using (var db = new MyDBContext())
+                        {
+                            foreach (var item in db.categories)
+                            {
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="product_cate_id" value="@item.id">
+                                        <span class="checkbox-material"></span>@item.name
+                                    </label>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+                <div>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-fill btn-rose">Add New</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿@using Mobie_store.Models.Entity
+@{
+    ViewBag.Title = "addNew";
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_Dashboard.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <form method="post" action="@Url.Action("addNew","image")" class="form-horizontal" enctype = "multipart/form-data">
+            <div class="card-header card-header-text" data-background-color="rose">
+                <h4 class="card-title">Form Add New Product Posts</h4>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    @Html.Raw(ViewBag.HtmlStr)
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Product</label>
+                    <div class="col-lg-4 col-md-6 col-sm-3">
+                        <div class="dropdown col-sm-6">
+                            <button href="#pablo" class="dropdown-toggle btn btn-primary btn-round btn-block" data-toggle="dropdown" aria-expanded="true">
+                                Danh sách sản phẩm
+                                <b class="caret"></b>
+                                <div class="ripple-container"></div>
+                            </button>
+                            <ul class="dropdown-menu">
+                                @using (var db = new MyDBContext())
+                                {
+                                    foreach (var item in db.products)
+                                    {
+                                        <li class="divider"></li>
+                                        <li>
+                                            <input type="checkbox" name="product_id" value="@item.id">
+                                            <span class="checkbox-material"></span>@item.name
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-2 label-on-left">Image</label>
+                    <div class="col-sm-6">
+                        <div class="form-group label-floating is-empty purple-border">
+                            <label class="control-label"></label>
+                            <span class="btn btn-success fileinput-button">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>Add files...</span>
+                                <!-- The file input field used as target for the file upload widget -->
+                                <input id="fileupload" type="file" name="files" multiple="multiple">
+                            </span>
+                            <br />
+                            <span style="color:green">@Html.Raw(ViewBag.Message)</span>
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-fill btn-rose">Add New</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
