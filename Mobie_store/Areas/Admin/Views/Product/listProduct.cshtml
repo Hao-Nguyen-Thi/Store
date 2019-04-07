@@ -1,8 +1,46 @@
 ﻿@model IEnumerable<Mobie_store.Models.Entity.product>
+@using Mobie_store.Models.Entity
 @{
     ViewBag.Title = "listProduct";
     Layout = "~/Areas/Admin/Views/Shared/Layout/_Dashboard.cshtml";
 }
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST"> 
+                <div class="modal-body">
+                    <div class="col-lg-5 col-md-6 col-sm-3">
+                        <div class="btn-group bootstrap-select">
+                            <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7" tabindex="-98">
+                                <option disabled="" selected="">Choose discount for product</option>
+                                @using (var db = new MyDBContext())
+                                {
+                                    List<discount> discounts = db.discounts.ToList();
+                                    foreach (var discount in discounts)
+                                    {
+                                        <option value="@discount.value">@discount.name : @discount.value %</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="UpdateProduct">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Content-->
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -24,6 +62,7 @@
                                 <th>Giá</th>
                                 <th>Status</th>
                                 <th>Activate</th>
+                                <th>Discount</th>
                                 <th class="disabled-sorting text-right">Actions</th>
                             </tr>
                         </thead>
@@ -35,6 +74,7 @@
                                 <th>Giá</th>
                                 <th>Status</th>
                                 <th>Activate</th>
+                                <th>Discount</th>
                                 <th class="text-right">Actions</th>
                             </tr>
                         </tfoot>
@@ -42,31 +82,33 @@
                             @{var count = 0;};
                             @foreach (var product in Model)
                             {
-                                <tr class="row_@product.id">
-                                    <td>@(++count)</td>
-                                    <td>@product.sku</td>
-                                    <td>@product.name</td>
-                                    <td>@product.price</td>
-                                    <td>@product.status</td>
-                                    <td>
-                                        @if (product.activate == 1)
-                                        {
-                                            <span class="label label-success">Active</span>
-                                        }
-                                        else
-                                        {
-                                            <span class="label label-danger">Deactive</span>
-                                        }
-                                    </td>
-                                    <td class="text-right">
-                                        <a href="" class="btn btn-simple btn-info btn-icon update_product" data-id="@product.id"><i class="material-icons">create</i></a>
-                                        <a href="" class="btn btn-simple btn-info btn-icon status_product" data-id="@product.id"><i class="material-icons">done</i></a>
-                                        <a href="" class="btn btn-simple btn-info btn-icon delete_product" data-id="@product.id"><i class="material-icons">clear</i></a>
-                                    </td>
-                                </tr>
+                            <tr class="row_@product.id">
+                                <td>@(++count)</td>
+                                <td>@product.sku</td>
+                                <td>@product.name</td>
+                                <td>@product.price</td>
+                                <td>@product.status</td>
+                                <td>
+                                    @if (product.activate == 1)
+                                    {
+                                        <span class="label label-success">Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-danger">Deactive</span>
+                                    }
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary label label-success" data-toggle="modal" data-target="#exampleModalCenter">Discount</button>
+                                </td>
+                                <td class="text-right">
+                                    <a href="" class="btn btn-simple btn-info btn-icon update_product" data-id="@product.id"><i class="material-icons">create</i></a>
+                                    <a href="" class="btn btn-simple btn-info btn-icon status_product" data-id="@product.id"><i class="material-icons">done</i></a>
+                                    <a href="" class="btn btn-simple btn-info btn-icon delete_product" data-id="@product.id"><i class="material-icons">clear</i></a>
+                                </td>
+                            </tr>
 
                             }
-
                         </tbody>
                     </table>
                 </div>

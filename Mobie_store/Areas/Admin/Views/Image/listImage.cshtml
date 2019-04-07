@@ -36,21 +36,18 @@
                         </tfoot>
                         <tbody>
                             @{var count = 0;};
-                            @using (var db = new MyDBContext())
-                            {
-                                foreach (var img in Model)
+                                @foreach (var img in Model)
                                 {
-                                    var _name = db.products.FirstOrDefault(m => m.id == img.product_id).name;
+                                   
                                 <tr class="row_@img.id">    
                                         <td>@(++count)</td>
-                                        <td>@_name</td>
+                                        <td>@img.product.name</td>
                                         <td><img src="@img.url" id="img_thumb" style="width: 100px; height: auto;"></td>
                                         <td class="text-right">
                                             <a href="" class="btn btn-simple btn-info btn-icon delete_image_product" data-id="@img.id"><i class="material-icons">clear</i></a>
                                         </td>
                                   </tr>
                                 }
-                             }
                         </tbody>
                     </table>
                 </div>

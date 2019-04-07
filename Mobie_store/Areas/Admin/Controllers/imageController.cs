@@ -22,6 +22,7 @@ namespace Mobie_store.Areas.Admin.Controllers
             using (var db = new MyDBContext())
             {
                 List<image> image = db.images.ToList();
+                image.ForEach(x => x.product.images.Clear());
                 return View(image);
             }
                 
