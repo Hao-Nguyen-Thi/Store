@@ -6,8 +6,9 @@ using System.Web.Mvc;
 
 namespace Mobie_store.Controllers
 {
-    public class HomeController : Controller
+    public class CheckoutController : Controller
     {
+        // GET: Checkout
         public ActionResult Index()
         {
             return View();

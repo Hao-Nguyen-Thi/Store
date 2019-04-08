@@ -146,7 +146,12 @@
     <Compile Include="Areas\Admin\Controllers\productController.cs" />
     <Compile Include="Areas\Admin\Controllers\reviewController.cs" />
     <Compile Include="Areas\Admin\Controllers\usersController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,6 +221,42 @@
     <Content Include="Assets\Admin\js\nouislider.min.js" />
     <Content Include="Assets\Admin\js\perfect-scrollbar.jquery.min.js" />
     <Content Include="Assets\Admin\js\sweetalert2.js" />
+    <Content Include="Assets\Home\css\bootstrap.min.css" />
+    <Content Include="Assets\Home\css\font-awesome.min.css" />
+    <Content Include="Assets\Home\css\owl.carousel.css" />
+    <Content Include="Assets\Home\css\responsive.css" />
+    <Content Include="Assets\Home\css\style.css" />
+    <Content Include="Assets\Home\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Home\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\Home\img\brand1.png" />
+    <Content Include="Assets\Home\img\brand2.png" />
+    <Content Include="Assets\Home\img\brand3.png" />
+    <Content Include="Assets\Home\img\brand4.png" />
+    <Content Include="Assets\Home\img\brand5.png" />
+    <Content Include="Assets\Home\img\brand6.png" />
+    <Content Include="Assets\Home\img\crossword.png" />
+    <Content Include="Assets\Home\img\h4-slide.png" />
+    <Content Include="Assets\Home\img\h4-slide2.png" />
+    <Content Include="Assets\Home\img\h4-slide3.png" />
+    <Content Include="Assets\Home\img\h4-slide4.png" />
+    <Content Include="Assets\Home\img\h4-slide7.png" />
+    <Content Include="Assets\Home\img\logo.png" />
+    <Content Include="Assets\Home\img\product-1.jpg" />
+    <Content Include="Assets\Home\img\product-2.jpg" />
+    <Content Include="Assets\Home\img\product-3.jpg" />
+    <Content Include="Assets\Home\img\product-4.jpg" />
+    <Content Include="Assets\Home\img\product-5.jpg" />
+    <Content Include="Assets\Home\img\product-6.jpg" />
+    <Content Include="Assets\Home\img\product-thumb-1.jpg" />
+    <Content Include="Assets\Home\img\product-thumb-2.jpg" />
+    <Content Include="Assets\Home\img\product-thumb-3.jpg" />
+    <Content Include="Assets\Home\img\product-thumb-4.jpg" />
+    <Content Include="Assets\Home\js\bxslider.min.js" />
+    <Content Include="Assets\Home\js\jquery.easing.1.3.min.js" />
+    <Content Include="Assets\Home\js\jquery.sticky.js" />
+    <Content Include="Assets\Home\js\main.js" />
+    <Content Include="Assets\Home\js\owl.carousel.min.js" />
+    <Content Include="Assets\Home\js\script.slider.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -250,6 +291,13 @@
     <Content Include="Areas\Admin\Views\Review\listReviews.cshtml" />
     <Content Include="Areas\Admin\Views\Users\addNew.cshtml" />
     <Content Include="Areas\Admin\Views\Users\listUsers.cshtml" />
+    <Content Include="Assets\Home\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Home\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Home\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Home\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Home\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\Home\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\Home\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -278,21 +326,22 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Upload\.DS_Store" />
     <Content Include="Upload\Admin\Thumbs.db" />
     <Content Include="Upload\Admin\YXZ0LmpwZw==" />
     <Content Include="Upload\Products\.DS_Store" />
     <Content Include="Upload\Users\.DS_Store" />
     <Content Include="Upload\Users\1b360dc6d1e366c0d79c8f6525ec0317" />
+    <Content Include="Views\Shared\Layouts\_Home.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ListProduct\Index.cshtml" />
+    <Content Include="Views\Detail\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Checkout\" />
+    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
