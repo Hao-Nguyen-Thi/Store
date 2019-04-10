@@ -26,7 +26,7 @@
                             <ul class="dropdown-menu">
                                 @using (var db = new MyDBContext())
                                 {
-                                    foreach (var item in db.products)
+                                    foreach( var item in db.products)
                                     {
                                         <li class="divider"></li>
                                         <li>
