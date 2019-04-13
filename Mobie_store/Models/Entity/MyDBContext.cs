@@ -137,6 +137,9 @@ namespace Mobie_store.Models.Entity
             modelBuilder.Entity<product>()
                 .Property(e => e.sim)
                 .IsUnicode(false);
+            modelBuilder.Entity<product>()
+                .Property(e => e.image)
+                .IsUnicode(false);
 
             modelBuilder.Entity<product>()
                 .HasMany(e => e.comments)

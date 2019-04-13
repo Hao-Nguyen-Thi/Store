@@ -63,6 +63,9 @@ namespace Mobie_store.Models.Entity
         public string sim { get; set; }
 
         [StringLength(255)]
+        public string image { get; set; }
+
+        [StringLength(255)]
         public string status { get; set; }
 
         public int? activate { get; set; }

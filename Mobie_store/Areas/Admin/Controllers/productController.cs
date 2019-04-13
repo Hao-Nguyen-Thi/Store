@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Mobie_store.Models.Entity;
+using Mobie_store.Models.Function;
 
 namespace Mobie_store.Areas.Admin.Controllers
 {
@@ -34,13 +36,19 @@ namespace Mobie_store.Areas.Admin.Controllers
             }
         }
         [HttpPost]
-        public ActionResult addNew(product model)
+        public ActionResult addNew(product model, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                using (var db = new MyDBContext())
+                if (file != null && file.ContentLength > 0)
+                {
+                    var filename = Path.GetFileName(file.FileName);
+                    var _ex = Path.GetExtension(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Upload/SingleProduct"), Hash.EncMD5(filename) + _ex);
+                    file.SaveAs(path);
+                    using (var db = new MyDBContext())
                     {
-                    db.products.Add(new product
+                        db.products.Add(new product
                         {
                             sku = model.sku,
                             name = model.name,
@@ -58,11 +66,13 @@ namespace Mobie_store.Areas.Admin.Controllers
                             sim = model.sim,
                             status = model.status,
                             product_cate_id = model.product_cate_id,
+                            image = "/Upload/SingleProduct/" + Hash.EncMD5(filename) + _ex,
                             activate = 1
-                       });
-                    db.SaveChanges();
-                    ViewBag.HtmlStr = "<div class=\"alert alert-info alert-with-icon col-md-6 col-md-offset-3\" data-notify=\"container\"><i class=\"material-icons\" data-notify=\"icon\">notifications</i><button type = \"button\" aria-hidden=\"true\" class=\"close\"><i class=\"material-icons\">close</i></button><span data-notify=\"message\">Insert Complete!.</span></div>";
+                        });
+                        db.SaveChanges();
+                        ViewBag.HtmlStr = "<div class=\"alert alert-info alert-with-icon col-md-6 col-md-offset-3\" data-notify=\"container\"><i class=\"material-icons\" data-notify=\"icon\">notifications</i><button type = \"button\" aria-hidden=\"true\" class=\"close\"><i class=\"material-icons\">close</i></button><span data-notify=\"message\">Insert Complete!.</span></div>";
                     }
+                }
             }
             else
             {

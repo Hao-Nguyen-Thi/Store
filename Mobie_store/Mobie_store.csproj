@@ -374,6 +374,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Upload\SingleProduct\" />
     <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
