@@ -52,6 +52,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -261,6 +267,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -298,6 +305,7 @@
     <Content Include="Assets\Home\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Assets\Home\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\Home\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -332,9 +340,10 @@
     <Content Include="Upload\Users\.DS_Store" />
     <Content Include="Upload\Users\1b360dc6d1e366c0d79c8f6525ec0317" />
     <Content Include="Views\Shared\Layouts\_Home.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ListProduct\Index.cshtml" />
     <Content Include="Views\Detail\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Detail\img.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
