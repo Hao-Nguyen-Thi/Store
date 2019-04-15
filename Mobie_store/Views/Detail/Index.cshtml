@@ -34,14 +34,24 @@
                 <div class="product-content-right">
                     <div class="product-breadcroumb">
                         <a href="@Url.Action("Index","Home")">Home</a>
-                        <a href="@Url.Action("Index","Detail")">Category Name</a>
+                        <a href="@Url.Action("Index","ListProduct")">Category Name</a>
                         <a href="">@Model.name</a>
                     </div>
 
                     <div class="row">
-                        @{ 
-                            Html.RenderAction("img");
-                        }
+                        <div class="col-sm-6">
+                            <div class="product-images">
+                                <div class="product-main-img">
+                                    <img src="~/Assets/Home/img/product-2.jpg" alt="">
+                                </div>
+
+                                <div class="product-gallery">
+                                    <img src="~/Assets/Home/img/product-thumb-1.jpg" alt="">
+                                    <img src="~/Assets/Home/img/product-thumb-2.jpg" alt="">
+                                    <img src="~/Assets/Home/img/product-thumb-3.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="col-sm-6">
                             <div class="product-inner">
