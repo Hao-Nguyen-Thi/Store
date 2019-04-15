@@ -142,6 +142,7 @@
     <Compile Include="Areas\Admin\Controllers\reviewController.cs" />
     <Compile Include="Areas\Admin\Controllers\usersController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
@@ -166,6 +167,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Account\css\bootstrap.min.css" />
+    <Content Include="Assets\Account\css\custom.css" />
+    <Content Include="Assets\Account\css\plugins.css" />
+    <Content Include="Assets\Account\css\style.css" />
+    <Content Include="Assets\Account\fonts\Flaticon.svg" />
+    <Content Include="Assets\Account\fonts\slick.svg" />
+    <Content Include="Assets\Account\js\ajaxmail.js" />
+    <Content Include="Assets\Account\js\bootstrap.min.js" />
+    <Content Include="Assets\Account\js\google-map.js" />
+    <Content Include="Assets\Account\js\jquery.min.js" />
+    <Content Include="Assets\Account\js\jquery.ripples.min.js" />
+    <Content Include="Assets\Account\js\main.js" />
+    <Content Include="Assets\Account\js\modernizr-3.6.0.min.js" />
+    <Content Include="Assets\Account\js\plugins.js" />
+    <Content Include="Assets\Account\js\popper.min.js" />
+    <Content Include="Assets\Account\js\video-background.js" />
     <Content Include="Assets\Admin\css\bootstrap.min.css" />
     <Content Include="Assets\Admin\css\demo.css" />
     <Content Include="Assets\Admin\css\material-dashboard.css" />
@@ -314,6 +331,18 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Assets\Account\fonts\Flaticon.eot" />
+    <Content Include="Assets\Account\fonts\Flaticon.ttf" />
+    <Content Include="Assets\Account\fonts\Flaticon.woff" />
+    <Content Include="Assets\Account\fonts\Flaticon.woff2" />
+    <Content Include="Assets\Account\fonts\Flaticond41d.eot" />
+    <Content Include="Assets\Account\fonts\Material-Design-Iconic-Fontd1f1.ttf" />
+    <Content Include="Assets\Account\fonts\Material-Design-Iconic-Fontd1f1.woff" />
+    <Content Include="Assets\Account\fonts\Material-Design-Iconic-Fontd1f1.woff2" />
+    <Content Include="Assets\Account\fonts\slick.eot" />
+    <Content Include="Assets\Account\fonts\slick.ttf" />
+    <Content Include="Assets\Account\fonts\slick.woff" />
+    <Content Include="Assets\Account\fonts\slickd41d.eot" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -370,12 +399,17 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\Layouts\_Account.cshtml" />
+    <Content Include="Views\Customer\Login.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Register.cshtml" />
+    <Content Include="Views\Customer\Deni.cshtml" />
+    <Content Include="Views\Categories\Product.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Upload\SingleProduct\" />
-    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

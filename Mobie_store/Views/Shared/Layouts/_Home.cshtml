@@ -43,9 +43,9 @@
                     <div class="user-menu">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                            <li><a href="/Cart"><i class="fa fa-user"></i> My Cart</a></li>
-                            <li><a href="/Checkout"><i class="fa fa-user"></i> Checkout</a></li>
-                            <li><a href="/Login"><i class="fa fa-user"></i> Login</a></li>
+                            <li><a href="/Cart"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
+                            <li><a href="/Checkout"><i class="fa fa-cc-paypal"></i> Checkout</a></li>
+                            <li><a href="/Customer"><i class="fa fa-user"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                                      foreach (var item in db.categories)
                                      {
                                           <li>
-                                             <a href="/ListProduct/@item.id">@item.name</a>
+                                             <a href="/Categories/Product/@item.id">@item.name</a>
                                           </li>
                                      }
                                 }
