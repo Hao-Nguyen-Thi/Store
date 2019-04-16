@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Mobie_store.Models.Entity.product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layouts/_Home.cshtml";
@@ -14,6 +14,14 @@
             </div>
         </div>
     </div>
+</div>
+<div>
+    <h2 class="sidebar-title">Search Products</h2>
+    @using (Html.BeginForm("Search", "ListProduct", FormMethod.Post))
+    {
+    <input type="text" name="searchName" placeholder="Search products...">
+    <input type="submit" value="Search">
+    }
 </div>
 <div class="single-product-area">
     <div class="zigzag-bottom"></div>
@@ -228,4 +236,5 @@
         </div>
     </div>
 </div>
+
 
