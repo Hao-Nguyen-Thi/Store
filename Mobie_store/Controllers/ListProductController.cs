@@ -18,5 +18,13 @@ namespace Mobie_store.Controllers
                 return View(product);
             }
         }
+        [HttpPost]
+        public ActionResult Search(string Desc)
+        {
+            MyDBContext db = new MyDBContext();
+            IQueryable<product> products = db.products.Where(product => product.name.Contains(Desc));
+            var result = products.ToList();
+            return View(result);
+        }
     }
 }

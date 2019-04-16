@@ -722,7 +722,6 @@
             dialia.productRatingInput();
             dialia.differentAddressFormToggle();
             dialia.scrollUpActive();
-
             dialia.parallaxActive();
             dialia.videoBackgroundActive();
             dialia.ajaxMailchimp();

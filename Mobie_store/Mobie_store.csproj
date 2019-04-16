@@ -405,6 +405,7 @@
     <Content Include="Views\Customer\Register.cshtml" />
     <Content Include="Views\Customer\Deni.cshtml" />
     <Content Include="Views\Categories\Product.cshtml" />
+    <Content Include="Views\ListProduct\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
