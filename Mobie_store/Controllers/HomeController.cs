@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Mobie_store.Models.Entity;
 
 namespace Mobie_store.Controllers
 {
@@ -10,7 +11,9 @@ namespace Mobie_store.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            MyDBContext db = new MyDBContext();
+            List<product> product = db.products.ToList();
+            return View(product);
         }
     }
 }

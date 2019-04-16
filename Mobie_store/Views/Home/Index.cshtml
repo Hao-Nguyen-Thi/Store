@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Mobie_store.Models.Entity.product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layouts/_Home.cshtml";
@@ -93,95 +93,23 @@
                 <div class="latest-product">
                     <h2 class="section-title">Latest Products</h2>
                     <div class="product-carousel">
-                        <div class="single-product">
+                        @foreach(var item in Model)
+                        {
+                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="~/Upload/Products/4ec3fc04c73b84b61ab9e4341a364975.jpg" alt="" style="width: auto; height: 262.172px;">
+                                <img src="@item.image" alt="" style="width: auto; height: 262.172px;">
                                 <div class="product-hover">
-                                    <a href="/Cart/addItem/1" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/Detail/1" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    <a href="/Cart/addItem/@item.id" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                    <a href="/Detail/@item.id" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                 </div>
                             </div>
-
                             <h2><a href="">Iphone XR</a></h2>
-
                             <div class="product-carousel-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
+                                <ins>@item.price VND</ins> @*<del>$100.00</del>*@
                             </div>
                         </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="~/Assets/Home/img/product-2.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/Detail/" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-
-                            <h2>Nokia Lumia 1320</h2>
-                            <div class="product-carousel-price">
-                                <ins>$899.00</ins> <del>$999.00</del>
-                            </div>
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="~/Assets/Home/img/product-3.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/Detail/" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-
-                            <h2>LG Leon 2015</h2>
-
-                            <div class="product-carousel-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="~/Assets/Home/img/product-4.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/Detail/" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-
-                            <h2><a href="single-product.html">Sony microsoft</a></h2>
-
-                            <div class="product-carousel-price">
-                                <ins>$200.00</ins> <del>$225.00</del>
-                            </div>
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="~/Assets/Home/img/product-5.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/Detail/" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-
-                            <h2>iPhone 6</h2>
-
-                            <div class="product-carousel-price">
-                                <ins>$1200.00</ins> <del>$1355.00</del>
-                            </div>
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="~/Assets/Home/img/product-6.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/Detail/" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                </div>
-                            </div>
-
-                            <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-
-                            <div class="product-carousel-price">
-                                <ins>$400.00</ins>
-                            </div>
-                        </div>
+                         }
+                        
                     </div>
                 </div>
             </div>
