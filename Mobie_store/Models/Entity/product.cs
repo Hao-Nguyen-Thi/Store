@@ -26,8 +26,7 @@ namespace Mobie_store.Models.Entity
         [StringLength(255)]
         public string name { get; set; }
 
-        [StringLength(255)]
-        public string price { get; set; }
+        public int price { get; set; }
 
         [StringLength(255)]
         public string Ghz { get; set; }
@@ -40,6 +39,11 @@ namespace Mobie_store.Models.Entity
 
         [StringLength(255)]
         public string cpu { get; set; }
+
+        internal static product Get(int id)
+        {
+            throw new NotImplementedException();
+        }
 
         [StringLength(255)]
         public string ram { get; set; }
@@ -63,9 +67,6 @@ namespace Mobie_store.Models.Entity
         public string sim { get; set; }
 
         [StringLength(255)]
-        public string image { get; set; }
-
-        [StringLength(255)]
         public string status { get; set; }
 
         public int? activate { get; set; }
@@ -73,6 +74,9 @@ namespace Mobie_store.Models.Entity
         public int? product_cate_id { get; set; }
 
         public int? discount_id { get; set; }
+
+        [StringLength(255)]
+        public string image { get; set; }
 
         public virtual category category { get; set; }
 

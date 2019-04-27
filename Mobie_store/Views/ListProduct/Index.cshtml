@@ -33,7 +33,7 @@
                             </div>
                             <h2><a href="">@item.name</a></h2>
                             <div class="product-carousel-price">
-                                <ins>@item.price VNĐ</ins> @*<del>$100.00</del>*@
+                                <ins>@string.Format("{0:#,#.##}", @item.price) VNĐ</ins> @*<del>$100.00</del>*@
                             </div>
                         </div>
                         <div>&nbsp;</div>

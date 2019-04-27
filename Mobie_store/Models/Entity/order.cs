@@ -18,8 +18,7 @@ namespace Mobie_store.Models.Entity
 
         public int? users_id { get; set; }
 
-        [StringLength(50)]
-        public string total_money { get; set; }
+        public int total_money { get; set; }
 
         public DateTime? date_create { get; set; }
 
