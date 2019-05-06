@@ -20,7 +20,6 @@ namespace Mobie_store.Areas.Admin.Controllers
             using (var db = new MyDBContext())
             {
                 List<order> order = db.orders.ToList();
-                order.ForEach(x => x.user.orders.Clear());// lawpj vong tron
                 return View(order);
             }
         }

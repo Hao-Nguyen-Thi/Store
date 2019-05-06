@@ -77,7 +77,11 @@ namespace Mobie_store.Models.Entity
                 .IsUnicode(false);
 
             modelBuilder.Entity<order>()
-                .Property(e => e.total_money)
+                .Property(e => e.phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<order>()
+                .Property(e => e.email)
                 .IsUnicode(false);
 
             modelBuilder.Entity<order>()
@@ -88,10 +92,6 @@ namespace Mobie_store.Models.Entity
 
             modelBuilder.Entity<product>()
                 .Property(e => e.sku)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<product>()
-                .Property(e => e.price)
                 .IsUnicode(false);
 
             modelBuilder.Entity<product>()
@@ -136,6 +136,10 @@ namespace Mobie_store.Models.Entity
 
             modelBuilder.Entity<product>()
                 .Property(e => e.sim)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<product>()
+                .Property(e => e.image)
                 .IsUnicode(false);
 
             modelBuilder.Entity<product>()

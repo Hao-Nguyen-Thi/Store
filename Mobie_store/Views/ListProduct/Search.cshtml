@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Mobie_store.Models.Entity.product>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/Layouts/_Home.cshtml";
+}
+
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Shop</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                if (item.activate == 1)
+                {
+                    <div class="col-md-3 col-sm-6">
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="@item.image" alt="" style="width: auto; height: 300px;">
+                                <div class="product-hover">
+                                    <a href="/Detail/Index/@item.id" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                </div>
+                            </div>
+                            <h2><a href="">@item.name</a></h2>
+                            <div class="product-carousel-price">
+                                <ins>@string.Format("{0:#,#.##}", @item.price) VNĐ</ins> @*<del>$100.00</del>*@
+                            </div>
+                        </div>
+                        <div>&nbsp;</div>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+</div>

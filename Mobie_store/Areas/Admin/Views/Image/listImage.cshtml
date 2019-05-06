@@ -40,7 +40,7 @@
                             {
                                 foreach (var img in Model)
                                 {
-                                    var _name = db.products.FirstOrDefault(m => m.id == img.product_id).name;
+                                    var _name = db.products.FirstOrDefault(m => m.id == img.product_id).sku;
                                 <tr class="row_@img.id">    
                                         <td>@(++count)</td>
                                         <td>@_name</td>

@@ -1,0 +1,188 @@
+﻿@using Mobie_store.Models.Function
+@using Mobie_store.Models.Entity
+@using Mobie_store.Hellper
+@using System.Globalization;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layouts/_Home.cshtml";
+}
+@{
+    List<CartDetail> listSanPhamOnCart = null;
+    Cart gio = (Cart)Session["cart"];
+    if (gio != null)
+    {
+        listSanPhamOnCart = gio.getCartDetailList();
+    }
+}
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Shopping Cart</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="single-sidebar">
+                        <h2 class="sidebar-title">Search Products</h2>
+                        <form action="#">
+                            <input type="text" placeholder="Search products...">
+                            <input type="submit" value="Search">
+                        </form>
+                    </div>
+                    <div class="single-sidebar">
+                        <h2 class="sidebar-title">Products</h2>
+                        <div class="thubmnail-recent">
+                            <img src="~/Assets/Home/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                            <h2><a href="single-product.html">Iphone 6S</a></h2>
+                            <div class="product-sidebar-price">
+                                <ins>$700.00</ins> <del>$800.00</del>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if (listSanPhamOnCart != null && listSanPhamOnCart.Count > 0)
+                {
+                    <div class="col-md-8">
+                        <div class="product-content-right">
+                            <div class="woocommerce">
+                                <form method="post" action="#">
+                                    <table cellspacing="0" class="shop_table cart">
+                                        <thead>
+                                            <tr>
+                                                <th class="product-remove">&nbsp;</th>
+                                                <th class="product-thumbnail">Image</th>
+                                                <th class="product-name">Product</th>
+                                                <th class="product-price">Price</th>
+                                                <th class="product-quantity">Quantity</th>
+                                                <th class="product-subtotal">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var sp in listSanPhamOnCart)
+                                            {
+                                                <tr class="cart_item_@sp.ID">
+                                                    <td class="text-center">
+                                                        <button type="submit" class="btn btn-xs btn-danger add-tooltip"
+                                                                data-original-title="Edit" data-container="body"
+                                                                onclick="del(@(sp.ID),'@(sp.Name)')">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                    <td class="product-thumbnail">
+                                                        <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="@sp.Images"></a>
+                                                    </td>
+                                                    <td class="product-name">
+                                                        <a href="">@sp.Name</a>
+                                                    </td>
+                                                    <td class="product-price">
+                                                        <span class="amount">@string.Format("{0:#,#.##}", sp.Price)</span>
+                                                    </td>
+                                                    <td class="product-quantity">
+                                                        <div class="quantity buttons_added">
+                                                            <input type="number" class="input-text qty text" size="4" onchange="UpdateQuantity(@sp.ID)" id="pro_@sp.ID" value="@sp.Quantity" min="0">
+                                                        </div>
+                                                    </td>
+                                                    <td class="product-subtotal">
+                                                        <span class="amount"></span>
+                                                        <span id="ThanhTien_@sp.ID">@(((decimal)sp.Price * ((decimal)sp.Quantity)).ToString("#,##0.")) ₫</span>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            <tr>
+                                                <td class="actions" colspan="6">
+                                                    <a href="/Cart/Checkout" name="proceed" class="checkout-button button alt wc-forward">Checkout</a>
+</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </form>
+                                <div class="cart-collaterals">
+                                    <div class="cart_totals ">
+                                        <h2>Cart Totals</h2>
+                                        <table cellspacing="0">
+                                            <tbody>
+                                                <tr class="cart-subtotal">
+                                                    <th>Cart Subtotal</th>
+                                                    <td class="text-right total-pri" id="TongTienTT">@(gio.getTotalPrice().ToString("#,##0.")) ₫</td>
+                                                </tr>
+                                                <tr class="shipping">
+                                                    <th>Shipping and Handling</th>
+                                                    <td>Free Shipping</td>
+                                                </tr>
+                                                <tr class="order-total">
+                                                    <th>Order Total</th>
+                                                    <td class="text-right total-pri" id="TongTienTTS"><strong>@(gio.getTotalPrice().ToString("#,##0.")) ₫</strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <h1 class="text-center">Không có sản phẩm nào</h1>
+                }
+            </div>
+        </div>
+    </div>
+
+<script>
+    function UpdateQuantity(id) {
+        var sl = $("#pro_" + id).val();
+        $.ajax({
+            type: 'POST',
+            url: '/cart/UpdateQuantity',
+            dataType: 'json',
+            data: { id: id, SoLuong: sl },
+            success: function (response) {
+                if (response.status) {
+                    console.log(response.mess)
+                    $("#ThanhTien_" + id).text(response.dongia.toLocaleString());
+                    $("#TongTienTT").text(response.totalprice.toLocaleString() + " ₫");
+                    $("#TongTienTTS").text(response.totalprice.toLocaleString() + " ₫");
+                }
+                else {
+                    console.log(response.mess)
+                }
+
+            }
+        });
+    }
+    function del(id, namePro) {
+        bootbox.confirm(" Xóa sản phẩm: <b>" + namePro + "</b>",
+            function (result) {
+                debugger
+                if (result) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Cart/Del',
+                        dataType: 'json',
+                        data: { ID: id },
+                        success: function (response) {
+                            if (response.status) {
+                                console.log(response.mess)
+                                $("#TongTienTT").text(response.totalprice.toLocaleString() + " ₫");
+                                $("#cart_item_" + id).empty();
+                            }
+                            else {
+                                console.log(response.mess)
+                            }
+                        }
+                    });
+                }
+            });
+    }
+</script>
+

@@ -1,0 +1,330 @@
+﻿@using System.Globalization;
+@using Mobie_store.Models.Entity;
+@using Mobie_store.Models.Function;
+@model Mobie_store.Models.Entity.user
+@{
+    List<CartDetail> listSanPhamOnCart = null;
+    Cart gio = (Cart)Session["cart"] ?? new Cart();
+    if (gio != null)
+    {
+        listSanPhamOnCart = gio.getCartDetailList();
+    }
+
+}
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/Layouts/_Home.cshtml";
+}
+
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Checkout</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .modal-dialog {
+        position: initial !important;
+    }
+</style>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<div class="main-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="/Cart/Index">Giỏ hàng</a></li>
+                    <li class="active">Check Out</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row form-group">
+        <div class="col-xs-12">
+            <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+                <li class="active">
+                    <a href="#step-1">
+                        <h4 class="list-group-item-heading">Step 1</h4>
+                        <p class="list-group-item-text">Xem trước giỏ hàng</p>
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a href="#step-2">
+                        <h4 class="list-group-item-heading">Step 2</h4>
+                        <p class="list-group-item-text">Second step description</p>
+                    </a>
+                </li>
+                @if (null != null)
+                {
+                    <li class="disabled">
+                        <a href="#step-3">
+                            <h4 class="list-group-item-heading">Step 3</h4>
+                            <p class="list-group-item-text">Third step description</p>
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="#step-3">
+                            <h4 class="list-group-item-heading">Đăng Nhập</h4>
+                            <p class="list-group-item-text">Đăng nhập tải khoản để lấy thông tin</p>
+                        </a>
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+    <div class="row setup-content" id="step-1">
+        <div class="col-xs-12">
+            <div class="col-md-12 well text-center">
+
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Your cart</span>
+                </h4>
+                <div class="row cart cart_table">
+                    @if (listSanPhamOnCart.Count > 0)
+                    {
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table cellspacing="0" class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-remove">&nbsp;</th>
+                                            <th class="product-thumbnail">Image</th>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-price">Price</th>
+                                            <th class="product-quantity">Quantity</th>
+                                            <th class="product-subtotal">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var sp in listSanPhamOnCart)
+                                        {
+                                            <tr class="cart_item_@sp.ID">
+                                                <td class="text-center">
+                                                    <button type="submit" class="btn btn-xs btn-danger add-tooltip"
+                                                            data-original-title="Edit" data-container="body"
+                                                            onclick="del(@(sp.ID),'@(sp.Name)')">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </td>
+                                                <td class="product-thumbnail">
+                                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="@sp.Images"></a>
+                                                </td>
+                                                <td class="product-name">
+                                                    <a href="">@sp.Name</a>
+                                                </td>
+                                                <td class="product-price">
+                                                    <span class="amount">@string.Format("{0:#,#.##}", sp.Price)</span>
+                                                </td>
+                                                <td class="product-quantity">
+                                                    <div class="quantity buttons_added">
+                                                        <input type="number" class="input-text qty text" size="4" onchange="UpdateQuantity(@sp.ID)" id="pro_@sp.ID" value="@sp.Quantity" min="0">
+                                                    </div>
+                                                </td>
+                                                <td class="product-subtotal">
+                                                    <span class="amount"></span>
+                                                    <span id="ThanhTien_@sp.ID">@(((decimal)sp.Price * ((decimal)sp.Quantity)).ToString("#,##0.")) ₫</span>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12">
+                            <div class="col-md-4 col-xs-12" style="padding-left: 0px;">
+                                <table class="table table-bordered total-table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-right">Tổng tiền</td>
+                                            <td class="text-right total-pri" id="TongTienTT">@(gio.getTotalPrice().ToString("#,##0.")) ₫</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="input-group" style="float:right">
+                                <label class="control-label">Tiếp tục thanh toán</label>
+                                <div class="input-group-append">
+                                    <button id="activate-step-2" class="btn btn-primary btn-md">Bước 2</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <h1 class="text-center">Không có sản phẩm nào</h1>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row setup-content" id="step-2">
+        <div class="col-xs-12">
+            @if (null == null)
+            {
+                <div class="col-md-12 well">
+                    <div class="col-md-12 order-md-1">
+                        <h4 class="mb-3">Hóa đơn thanh toán</h4>
+                        @using (Html.BeginForm("DoneCheckOut", "Cart", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">Họ và tên(*) </label>
+                                    <input type="text" class="form-control" name="FullName" placeholder="Họ và tên" value="@Model.fullname" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">Số điện thoại </label>
+                                    <input type="text" class="form-control" name="Phone" placeholder="Số điện thoại" value="@Model.phone" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email" name="Email" value="@Model.email">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="Gender">Giới Tính</label>
+                                    <select name="Gender" class="form-control">
+                                        <option selected value="true">Nam </option>
+                                        <option value="false"> Nữ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="address">Giao hàng tới</label>
+                                    <div id="lookup">
+                                        <input type="text" class="form-control" id="address-lookup" name="Address" placeholder="Địa chỉ nhận hàng" value="@Model.address" required>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <label class="custom-control-label" for="same-address">
+                                    Thanh toán khi nhận hàng
+                                </label>
+                            </div>
+                            <hr class="mb-4">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Hoàn tất</button>
+                        }
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row setup-content" id="step-3">
+        <div class="col-xs-12">
+            <div class="col-md-12 well">
+                <h1 class="text-center"> STEP 3</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        var navListItems = $('ul.setup-panel li a'),
+            allWells = $('.setup-content');
+
+        allWells.hide();
+
+        navListItems.click(function (e) {
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this).closest('li');
+
+            if (!$item.hasClass('disabled')) {
+                navListItems.closest('li').removeClass('active');
+                $item.addClass('active');
+                allWells.hide();
+                $target.show();
+            }
+        });
+
+        $('ul.setup-panel li.active a').trigger('click');
+
+        // DEMO ONLY //
+        $('#activate-step-2').on('click', function (e) {
+            $('ul.setup-panel li:eq(1)').removeClass('disabled');
+            $('ul.setup-panel li a[href="#step-2"]').trigger('click');
+            $(this).remove();
+        })
+    });
+
+
+</script>
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script>window.jQuery || document.write('<script src="~/Scripts/jquery-2.1.1.min.js"><\/script>')</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCHy7MUTk1eb8TB-Yn_G6z3MJVD_c0xxw"></script>
+<script src="~/Scripts/address-lookup.js"></script>
+<script>
+    $("#lookup").addressLookup({
+        "input": "#address-lookup"
+    })
+</script>
+<script>
+    function UpdateQuantity(id) {
+        var sl = $("#pro_" + id).val();
+        $.ajax({
+            type: 'POST',
+            url: '/cart/UpdateQuantity',
+            dataType: 'json',
+            data: { id: id, SoLuong: sl },
+            success: function (response) {
+                if (response.status) {
+                    console.log(response.mess)
+                    $("#ThanhTien_" + id).text(response.dongia.toLocaleString());
+                    $("#TongTienTT").text(response.totalprice.toLocaleString() + " ₫");
+                }
+                else {
+                    console.log(response.mess)
+                }
+
+            }
+        });
+    }
+    function del(id, namePro) {
+        bootbox.confirm(" Xóa sản phẩm: <b>" + namePro + "</b>",
+            function (result) {
+                debugger
+                if (result) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Cart/Del',
+                        dataType: 'json',
+                        data: { ID: id },
+                        success: function (response) {
+                            if (response.status) {
+                                console.log(response.mess)
+                                $("#TongTienTT").text(response.totalprice.toLocaleString() + " ₫");
+                                $("#cart_item_" + id).empty();
+                            }
+                            else {
+                                console.log(response.mess)
+                            }
+                        }
+                    });
+                }
+            });
+    }
+</script>
+
