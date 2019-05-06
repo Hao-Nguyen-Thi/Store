@@ -26,7 +26,7 @@ namespace Mobie_store.Models.Entity
         [StringLength(255)]
         public string name { get; set; }
 
-        public int price { get; set; }
+        public int? price { get; set; }
 
         [StringLength(255)]
         public string Ghz { get; set; }
@@ -39,11 +39,6 @@ namespace Mobie_store.Models.Entity
 
         [StringLength(255)]
         public string cpu { get; set; }
-
-        internal static product Get(int id)
-        {
-            throw new NotImplementedException();
-        }
 
         [StringLength(255)]
         public string ram { get; set; }

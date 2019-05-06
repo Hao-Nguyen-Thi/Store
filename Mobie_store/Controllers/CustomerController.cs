@@ -6,18 +6,33 @@ using System.Web;
 using System.Web.Mvc;
 using Mobie_store.Models.Entity;
 using Mobie_store.Models.Function;
+using Dapper;
+using Mobie_store.Hellper;
+using System.Data;
 
 namespace Mobie_store.Controllers
 {
     public class CustomerController : Controller
     {
         // GET: Customer
+        public static List<order> getorder(int? id)
+        {
+            using (var db = SetupConnection.ConnectionFactory())
+            {
+                if (db.State == ConnectionState.Closed)
+                    db.Open();
+                var sql = "SELECT * FROM dbo.orders Where users_id =@id;";
+                return db.Query<order>(sql, new {id = id}).ToList();
+            }
+        }
         public ActionResult Index()
         {
             if (Session["user"] != null)
             {
                 user user = (user)Session["user"];
                 if (user.activated == 1) {
+                    List<order> or = CustomerController.getorder(user.id);
+                    ViewBag.Order = or;
                     return View(user);
                 }
                 else

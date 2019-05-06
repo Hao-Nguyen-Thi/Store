@@ -18,12 +18,29 @@ namespace Mobie_store.Models.Entity
 
         public int? users_id { get; set; }
 
-        public int total_money { get; set; }
+        public int? total_money { get; set; }
 
         public DateTime? date_create { get; set; }
 
         [StringLength(255)]
         public string method { get; set; }
+
+        public int? status { get; set; }
+
+        [StringLength(255)]
+        public string fullname { get; set; }
+
+        [StringLength(255)]
+        public string gender { get; set; }
+
+        [StringLength(255)]
+        public string phone { get; set; }
+
+        [StringLength(255)]
+        public string email { get; set; }
+
+        [StringLength(255)]
+        public string address { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_detail> order_detail { get; set; }

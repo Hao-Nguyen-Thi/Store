@@ -123,7 +123,7 @@ namespace Mobie_store.Controllers
 
         public ActionResult DoneCheckOut(orderFnc bill)
         {
-
+            user u = (user)Session["user"];
             if (bill != null)
             {
                 //insert DetailBill
@@ -135,13 +135,11 @@ namespace Mobie_store.Controllers
                     {
                         bill.total_money = gio.getTotalPrice();
                         bill.date_create = DateTime.Now;
+                        bill.users_id = u.id;
                         cardt = gio.getCartDetailList();
 
                         if (bill.CreateBill(cardt))
                         {
-                            orderFnc b = orderFnc.Get().OrderByDescending(x => x.id).FirstOrDefault();
-                            ViewBag.bill = orderFnc.Get(b.id);
-                            ViewBag.name = orderFnc.getUser(bill.users_id);
                             Session["cart"] = null;
                             return View();
                         }
@@ -161,7 +159,16 @@ namespace Mobie_store.Controllers
         }
         public ActionResult CheckOut()
         {
-            return View();
+            if(Session["user"] == null)
+            {
+                return RedirectToAction("Login", "Customer");
+            }
+            else
+            {
+                user users = new user();
+                users = (user)Session["user"];
+                return View(users);
+            }
         }
     }
 }

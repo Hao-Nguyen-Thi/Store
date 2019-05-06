@@ -10,7 +10,7 @@ namespace Mobie_store.Models.Entity
         public MyDBContext()
             : base("name=MyDBContext")
         {
-        } 
+        }
 
         public virtual DbSet<admin> admins { get; set; }
         public virtual DbSet<category> categories { get; set; }
@@ -77,7 +77,12 @@ namespace Mobie_store.Models.Entity
                 .IsUnicode(false);
 
             modelBuilder.Entity<order>()
-                .Property(e => e.total_money);
+                .Property(e => e.phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<order>()
+                .Property(e => e.email)
+                .IsUnicode(false);
 
             modelBuilder.Entity<order>()
                 .HasMany(e => e.order_detail)
@@ -88,9 +93,6 @@ namespace Mobie_store.Models.Entity
             modelBuilder.Entity<product>()
                 .Property(e => e.sku)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<product>()
-                .Property(e => e.price);
 
             modelBuilder.Entity<product>()
                 .Property(e => e.Ghz)

@@ -67,10 +67,10 @@ namespace Mobie_store.Models.Function
         // Error string to int
         public int getTotalPrice()
         {
-            int tong = 0;
+            int? tong = 0;
             foreach (CartDetail i in listHangHoa)
                 tong += i.Quantity * (i.Price);
-            return tong;
+            return (int)tong;
         }
     }
 }

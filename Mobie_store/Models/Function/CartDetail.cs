@@ -12,7 +12,7 @@ namespace Mobie_store.Models.Function
         public int ID { get; set; }
         public string Name { get; set; }
         public string Images { get; set; }
-        public int Price { get; set; }
+        public int? Price { get; set; }
         public int Quantity { get; set; }
 
         public static CartDetail Post(Entity.product prAdd, int SoLuong)

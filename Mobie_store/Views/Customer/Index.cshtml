@@ -39,19 +39,22 @@
                                     <tr>
                                         <th class="tm-myaccount-orders-col-id">ORDER ID</th>
                                         <th class="tm-myaccount-orders-col-date">DATE</th>
-                                        <th class="tm-myaccount-orders-col-status">STATUS</th>
                                         <th class="tm-myaccount-orders-col-total">TOTAL</th>
                                         <th class="tm-myaccount-orders-col-view">VIEW</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @{var count = 0;};
+                                    @foreach (var or in ViewBag.Order)
+                                    {
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>@(++count)</td>
+                                        <td>@or.date_create</td>
+                                        <td>@string.Format("{0:#,#.##}", or.total_money) đ</td>
                                         <td><a href="#" class="tm-button tm-button-sm">View <b></b></a></td>
                                     </tr>
+                                    }
+
                                 </tbody>
                             </table>
                         </div>

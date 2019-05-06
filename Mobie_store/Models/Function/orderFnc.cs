@@ -26,6 +26,18 @@ namespace Mobie_store.Models.Function
 
         public string method { get; set; }
 
+        public int Status { get; set; }
+
+        public string FullName { get; set; }
+
+        public bool Gender { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Email { get; set; }
+
+        public string Address { get; set; }
+
         public List<order_detail> orderDetail { set; get; }
 
 
@@ -85,7 +97,13 @@ namespace Mobie_store.Models.Function
                                 date_create = this.date_create,
                                 users_id = this.users_id,
                                 total_money = this.total_money,
-                                method = this.method
+                                method = this.method,
+                                Status = this.Status,
+                                FullName = this.FullName,
+                                Email = this.Email,
+                                Address = this.Address,
+                                Phone = this.Phone,
+                                Gender = this.Gender
                             },
                             commandType: CommandType.StoredProcedure,
                             transaction: transaction);
